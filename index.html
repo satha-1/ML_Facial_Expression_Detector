@@ -10,36 +10,43 @@
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>😊 Facial Expression Classifier</h1>
-    <p class="subtitle">Powered by Teachable Machine &amp; TensorFlow.js</p>
+  <div class="layout">
 
-    <!-- Controls -->
-    <div class="controls">
-      <button id="startBtn" onclick="startCamera()">▶ Start Camera</button>
-      <button id="stopBtn" onclick="stopCamera()" disabled>⏹ Stop Camera</button>
+    <!-- LEFT — Webcam -->
+    <div class="panel-left">
+      <div class="webcam-wrapper">
+        <video id="webcam" autoplay playsinline></video>
+        <div id="placeholder" class="placeholder">Camera is off</div>
+      </div>
     </div>
 
-    <!-- Webcam Preview -->
-    <div class="webcam-wrapper">
-      <video id="webcam" autoplay playsinline></video>
-      <div id="placeholder" class="placeholder">Camera is off</div>
+    <!-- RIGHT — Controls & Results -->
+    <div class="panel-right">
+      <h1>😊 Facial Expression Classifier</h1>
+      <p class="subtitle">Powered by Teachable Machine &amp; TensorFlow.js</p>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button id="startBtn" onclick="startCamera()">▶ Start Camera</button>
+        <button id="stopBtn" onclick="stopCamera()" disabled>⏹ Stop Camera</button>
+      </div>
+
+      <!-- Top Prediction -->
+      <div id="topPrediction" class="top-prediction hidden">
+        <span id="topLabel" class="top-label">—</span>
+        <span id="topConfidence" class="top-confidence">0%</span>
+      </div>
+
+      <!-- All Class Probabilities -->
+      <div id="probabilities" class="probabilities hidden">
+        <h2>Class Probabilities</h2>
+        <ul id="probList"></ul>
+      </div>
+
+      <!-- Disclaimer -->
+      <p class="disclaimer">⚠ This demo detects facial expressions, not real emotions.</p>
     </div>
 
-    <!-- Top Prediction -->
-    <div id="topPrediction" class="top-prediction hidden">
-      <span id="topLabel" class="top-label">—</span>
-      <span id="topConfidence" class="top-confidence">0%</span>
-    </div>
-
-    <!-- All Class Probabilities -->
-    <div id="probabilities" class="probabilities hidden">
-      <h2>Class Probabilities</h2>
-      <ul id="probList"></ul>
-    </div>
-
-    <!-- Disclaimer -->
-    <p class="disclaimer">⚠ This demo detects facial expressions, not real emotions.</p>
   </div>
 
   <script src="app.js"></script>
