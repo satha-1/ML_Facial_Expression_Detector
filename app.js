@@ -2,6 +2,7 @@
 // MODEL URL — paste your Teachable Machine link here (must end with /)
 // ──────────────────────────────────────────────
 const MODEL_URL = "https://teachablemachine.withgoogle.com/models/P_hvRoRyH/";
+const THRESHOLD = 0.60; // minimum confidence to show a label
 
 // ── DOM refs ──
 const video       = document.getElementById("webcam");
@@ -124,9 +125,14 @@ async function predictLoop(timestamp) {
       if (p.probability > best.probability) best = p;
     }
 
-    // Update top prediction display
-    topLabel.textContent = best.className;
-    topConf.textContent  = (best.probability * 100).toFixed(1) + "%";
+    // Update top prediction display ("Not sure" if below threshold)
+    if (best.probability >= THRESHOLD) {
+      topLabel.textContent = best.className;
+      topConf.textContent  = (best.probability * 100).toFixed(1) + "%";
+    } else {
+      topLabel.textContent = "Not sure";
+      topConf.textContent  = "Try again";
+    }
 
     // Update per-class bars
     for (const p of predictions) {
