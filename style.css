@@ -1,0 +1,201 @@
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+}
+
+/* ── Container Card ── */
+.container {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Buttons ── */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#startBtn {
+  background: #4caf50;
+  color: #fff;
+}
+
+#stopBtn {
+  background: #f44336;
+  color: #fff;
+}
+
+/* ── Webcam ── */
+.webcam-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #111;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#webcam {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.placeholder {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* ── Top Prediction ── */
+.top-prediction {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.2rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.top-label {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.top-confidence {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #76ff03;
+}
+
+/* ── Probabilities ── */
+.probabilities {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  transition: opacity 0.3s;
+}
+
+.probabilities h2 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: #ccc;
+}
+
+.probabilities ul {
+  list-style: none;
+}
+
+.probabilities li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 1.05rem;
+}
+
+.probabilities li:last-child {
+  border-bottom: none;
+}
+
+.bar-bg {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 0 0.75rem;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: #76ff03;
+  transition: width 0.15s ease;
+}
+
+.class-name {
+  min-width: 80px;
+}
+
+.class-pct {
+  min-width: 52px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Disclaimer ── */
+.disclaimer {
+  font-size: 0.82rem;
+  color: #999;
+  line-height: 1.4;
+}
+
+/* ── Utility ── */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
